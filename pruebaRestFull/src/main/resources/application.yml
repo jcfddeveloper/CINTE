@@ -1,0 +1,43 @@
+server:
+  port: 8085
+  error:
+    include-stacktrace: never
+
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: sa
+    url: jdbc:h2:mem:testdb
+    username: sa
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+  security:
+    user:
+      name: admin
+      password: admin
+  sql:
+    init:
+      mode: always
+      
+jms:
+  jwt:
+    security:
+      enabled: true
+    time-zone: "America/Bogota"
+    issuer: "www.cesarferreira.com.co"
+    token:
+      auth:
+        path: "/v1.0/oauth/client_credential/accesstoken"
+      secret: "cadena de seguridad #123"
+      expires-in: 3600 #segundos
+    excluded:
+      path: "/v1.0/info,/v1.0/info2"
+      
+      
+      
